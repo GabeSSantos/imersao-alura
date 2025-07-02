@@ -1,0 +1,13 @@
+services:
+  app:
+    # Constrói a imagem a partir do Dockerfile no diretório atual.
+    build: .
+    container_name: imersao-api #nome do container
+    # Mapeia a porta 8000 do seu computador para a porta 8000 do contêiner.
+    ports:
+      - "8000:8000"
+    # A "mágica" acontece aqui:
+    # Montamos o diretório atual ('.') para o diretório '/app' dentro do contêiner.
+    # Isso faz com que o arquivo 'escola.db' seja salvo no seu computador, e também ativa o hot-reload para o código.
+    volumes:
+      - .:/app
